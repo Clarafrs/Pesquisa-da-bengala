@@ -88,3 +88,52 @@ ul li::before {
     color: var(--azul-escuro);
     box-shadow: 0 0 12px var(--azul-destaque);
 }
+/* Estilo base dos botões de acessibilidade */
+.painel-acessibilidade {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.painel-acessibilidade button {
+    background-color: var(--azul-principal, #0052cc);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.painel-acessibilidade button:hover {
+    background-color: #003d99;
+}
+
+/* -------------------------------------------------- */
+/* MODO ALTO CONTRASTE (Ativado pelo JavaScript)      */
+/* -------------------------------------------------- */
+body.alto-contraste {
+    background-color: #000000 !important;
+    color: #ffff00 !important; /* Texto em amarelo vibrante */
+}
+
+/* Força os cartões e caixas a ficarem pretos com borda amarela */
+body.alto-contraste .card,
+body.alto-contraste header,
+body.alto-contraste .caixa-circuito {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffff00 !important;
+    box-shadow: none !important;
+}
+
+/* Links em azul brilhante no modo contraste */
+body.alto-contraste a,
+body.alto-contraste .btn-acao {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+}
