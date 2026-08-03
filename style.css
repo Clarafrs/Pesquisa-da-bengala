@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 }
 
 body {
@@ -111,6 +112,36 @@ ul li::before {
 
 .painel-acessibilidade button:hover {
     background-color: #003d99;
+}
+/* Configuração geral do texto da página */
+body {
+  font-family: 'Poppins', sans-serif; /* Fonte legível e moderna */
+  color: #333333;
+}
+
+/* Estilo do Título Principal */
+h1 {
+  font-size: 2.5rem; /* Aumenta o tamanho (pode ajustar para 3rem se quiser maior) */
+  font-weight: 700;  /* Deixa o texto bem destacado */
+  color: #005f73;    /* Azul Petróleo */
+  border-bottom: 3px solid #005f73; /* Linha de detalhe abaixo do título */
+  padding-bottom: 8px;
+}
+
+/* Detalhes em Azul Petróleo em outros elementos */
+button {
+  background-color: #005f73;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mantém o comportamento correto quando o Alto Contraste for ativado */
+body.high-contrast h1 {
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
 }
 
 /* -------------------------------------------------- */
