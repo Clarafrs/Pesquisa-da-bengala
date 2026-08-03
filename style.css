@@ -121,7 +121,7 @@ body.alto-contraste {
     color: #ffff00 !important; /* Texto em amarelo vibrante */
 }
 
-/* Força os cartões e caixas a ficarem pretos com borda amarela */
+/* Forca os cartoes e caixas a ficarem pretos com borda amarela */
 body.alto-contraste .card,
 body.alto-contraste header,
 body.alto-contraste .caixa-circuito {
@@ -136,4 +136,28 @@ body.alto-contraste a,
 body.alto-contraste .btn-acao {
     background-color: #ffff00 !important;
     color: #000000 !important;
+}
+/* Cores Padrao */
+body {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo de Alto Contraste */
+body.high-contrast {
+  background-color: #000000 !important;
+  color: #ffff00 !important; /* Texto amarelo em fundo preto garante altissimo contraste */
+}
+
+/* Garante que links e botoes tambem fiquem visiveis no alto contraste */
+body.high-contrast a {
+  color: #00ffff !important;
+}
+
+body.high-contrast button {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+  border: 2px solid #ffffff !important;
 }
