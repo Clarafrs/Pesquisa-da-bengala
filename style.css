@@ -1,51 +1,71 @@
+/* ==========================================================================
+   1. VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS (:root)
+   ========================================================================== */
+:root {
+    --fundo-pagina: #120024;
+    --texto: #ffffff;
+    --azul-escuro: #001233;
+    --azul-principal: #3a86ff;
+    --azul-destaque: #9d4edd;
+    --azul-suave: #002255;
+    --focus-border: #00f5d4;
+    --card-bg: #001233;
+}
 
+/* Reset básico e tipografia global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-    
+
 body {
     background-color: var(--fundo-pagina);
     color: var(--texto);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Cabecalho Criativo com Gradiente */
+/* ==========================================================================
+   2. CABEÇALHO (HEADER) E TÍTULOS
+   ========================================================================== */
 header {
     background: linear-gradient(135deg, var(--azul-escuro), var(--azul-principal));
-    color: white;
+    color: #ffffff;
     padding: 3rem 2rem;
     text-align: center;
     border-bottom: 5px solid var(--azul-destaque);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-header h1 {
-    font-size: 2.5rem;
+header h1, h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
     margin-bottom: 0.5rem;
+    font-weight: 700;
 }
 
-/* Cartoes de Conteudo (Cards) */
+/* ==========================================================================
+   3. CARTÕES (CARDS) E CAIXAS DE DESTAQUE
+   ========================================================================== */
 .card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 1.5rem auto;
     max-width: 800px;
     border-left: 6px solid var(--azul-principal);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efeito Hover Criativo (Elevacao ao passar o mouse) */
+/* Efeito Hover nos Cartões */
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 82, 204, 0.2);
+    box-shadow: 0 8px 20px rgba(58, 134, 255, 0.25);
 }
 
-/* Caixa de Destaque para o Codigo/Circuito */
+/* Caixa de Destaque para Circuitos/Código */
 .caixa-circuito {
     background-color: var(--azul-suave);
     border: 2px dashed var(--azul-principal);
@@ -54,140 +74,123 @@ header h1 {
     margin-top: 1rem;
 }
 
-/* Lista Personalizada */
+/* ==========================================================================
+   4. ELEMENTOS INTERATIVOS (BOTÕES E LISTAS)
+   ========================================================================== */
 ul {
     list-style: none;
+    margin-top: 0.5rem;
 }
 
 ul li {
     padding: 0.5rem 0;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1.8rem;
 }
 
 ul li::before {
-    content: "⚡"; /* Icone tematico antes de cada item */
+    content: "⚡";
     position: absolute;
     left: 0;
 }
 
-/* Botoes Interativos */
-.btn-acao {
+/* Botão Genérico e Botão de Ação */
+button, .btn-acao {
     display: inline-block;
     background-color: var(--azul-principal);
-    color: white;
+    color: #ffffff;
     padding: 0.8rem 1.5rem;
+    border: none;
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.btn-acao:hover {
+button:hover, .btn-acao:hover {
     background-color: var(--azul-destaque);
-    color: var(--azul-escuro);
+    color: #ffffff;
     box-shadow: 0 0 12px var(--azul-destaque);
+    transform: translateY(-2px);
 }
-/* Estilo base dos botoes de acessibilidade */
+
+button:focus, a:focus, .btn-acao:focus {
+    outline: 3px solid var(--focus-border);
+    outline-offset: 3px;
+}
+
+/* ==========================================================================
+   5. PAINEL DE ACESSIBILIDADE (FIXO)
+   ========================================================================== */
 .painel-acessibilidade {
     position: fixed;
     top: 10px;
     right: 10px;
     z-index: 1000;
     display: flex;
-    gap: 5px;
+    gap: 8px;
 }
 
 .painel-acessibilidade button {
-    background-color: var(--azul-principal, #0052cc);
-    color: white;
+    background-color: var(--azul-principal);
+    color: #ffffff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 8px 14px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .painel-acessibilidade button:hover {
-    background-color: #003d99;
-}
-/* Configuracao geral do texto da pagina */
-body {
-  font-family: 'Poppins', sans-serif; /* Fonte legivel e moderna */
-  color: #333333;
+    background-color: var(--azul-destaque);
 }
 
-/* Estilo do Titulo Principal */
-h1 {
-  font-size: 2.5rem; 
-  font-weight: 700;  
-  color: #005f73;    
-  border-bottom: 3px solid #005f73; 
-  padding-bottom: 8px;
-}
-
-/* Detalhes em Azul Petroleo em outros elementos */
-button {
-  background-color: #005f73;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Mantem o comportamento correto quando o Alto Contraste for ativado */
-body.high-contrast h1 {
-  color: #ffff00 !important;
-  border-color: #ffff00 !important;
-}
-
-/* -------------------------------------------------- */
-/* MODO ALTO CONTRASTE (Ativado pelo JavaScript)      */
-/* -------------------------------------------------- */
-body.alto-contraste {
+/* ==========================================================================
+   6. MODO ALTO CONTRASTE (Compatível com .alto-contraste e .high-contrast)
+   ========================================================================== */
+body.alto-contraste,
+body.high-contrast {
     background-color: #000000 !important;
-    color: #ffff00 !important; /* Texto em amarelo vibrante */
+    color: #ffff00 !important;
 }
 
-/* Forca os cartoes e caixas a ficarem pretos com borda amarela */
-body.alto-contraste .card,
-body.alto-contraste header,
-body.alto-contraste .caixa-circuito {
+body.alto-contraste *,
+body.high-contrast * {
     background-color: #000000 !important;
-    color: #ffffff !important;
-    border: 2px solid #ffff00 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
     box-shadow: none !important;
 }
 
-/* Links em azul brilhante no modo contraste */
 body.alto-contraste a,
-body.alto-contraste .btn-acao {
+body.high-contrast a,
+body.alto-contraste button,
+body.high-contrast button,
+body.alto-contraste .btn-acao,
+body.high-contrast .btn-acao {
     background-color: #ffff00 !important;
     color: #000000 !important;
-}
-/* Cores Padrao */
-body {
-  background-color: #ffffff;
-  color: #333333;
-  font-family: sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+    border: 2px solid #ffffff !important;
+    font-weight: bold !important;
 }
 
-/* Estilo de Alto Contraste */
-body.high-contrast {
-  background-color: #000000 !important;
-  color: #ffff00 !important; /* Texto amarelo em fundo preto garante altissimo contraste */
-}
+/* ==========================================================================
+   7. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 600px) {
+    header {
+        padding: 2rem 1rem;
+    }
 
-/* Garante que links e botoes tambem fiquem visiveis no alto contraste */
-body.high-contrast a {
-  color: #00ffff !important;
-}
+    .card {
+        margin: 1rem;
+        padding: 1rem;
+    }
 
-body.high-contrast button {
-  background-color: #ffff00 !important;
-  color: #000000 !important;
-  border: 2px solid #ffffff !important;
+    .painel-acessibilidade {
+        top: 5px;
+        right: 5px;
+    }
 }

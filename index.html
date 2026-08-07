@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Protótipo de bengala inteligente com sensor ultrassônico para melhorar a acessibilidade e mobilidade urbana de pessoas com deficiência visual.">
     <title>Inovação em Acessibilidade: Bengala Ultrassônica</title>
     <style>
         /* Reset e Variáveis de Cores com Alto Contraste */
@@ -13,6 +14,7 @@
             --accent-purple: #9d4edd;
             --accent-blue: #3a86ff;
             --focus-border: #00f5d4;
+            --highlight-color: #00f5d4;
         }
 
         * {
@@ -22,25 +24,30 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-light);
             background-color: var(--bg-dark-purple);
         }
 
-        /* Atalho de acessibilidade para teclado */
+        /* Atalho de acessibilidade para navegação por teclado */
         .skip-link {
             position: absolute;
-            top: -40px;
-            left: 0;
+            top: -50px;
+            left: 10px;
             background: var(--accent-blue);
-            color: white;
-            padding: 8px;
+            color: var(--text-light);
+            padding: 10px 16px;
+            border-radius: 0 0 4px 4px;
             z-index: 100;
-            transition: top 0.2s;
+            font-weight: bold;
+            text-decoration: none;
+            transition: top 0.2s ease-in-out;
         }
+
         .skip-link:focus {
             top: 0;
+            outline: 3px solid var(--focus-border);
         }
 
         /* Layout Tela Repartida (Split Screen) */
@@ -56,46 +63,43 @@
             }
         }
 
-        /* Lado Esquerdo - Roxo Escuro (O Contexto) */
+        /* Lado Esquerdo - Roxo Escuro (Contexto) */
         .left-panel {
             background-color: var(--bg-dark-purple);
             flex: 1;
-            padding: 2rem;
+            padding: 2.5rem 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             border-bottom: 4px solid var(--accent-purple);
         }
 
-        @media (min-width: 768px) {
-            .left-panel {
-                border-bottom: none;
-                border-right: 4px solid var(--accent-purple);
-                padding: 4rem;
-            }
-        }
-
-        /* Lado Direito - Azul Escuro (O Projeto de Vocês) */
+        /* Lado Direito - Azul Escuro (Projeto) */
         .right-panel {
             background-color: var(--bg-dark-blue);
             flex: 1;
-            padding: 2rem;
+            padding: 2.5rem 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         @media (min-width: 768px) {
-            .right-panel {
+            .left-panel, .right-panel {
                 padding: 4rem;
+            }
+            .left-panel {
+                border-bottom: none;
+                border-right: 4px solid var(--accent-purple);
             }
         }
 
-        /* Tipografia e Elementos */
+        /* Tipografia e Hierarquia */
         h1, h2 {
-            font-size: 2.3rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 1.5rem;
             color: var(--text-light);
+            line-height: 1.2;
         }
 
         .left-panel h1 {
@@ -109,53 +113,54 @@
         }
 
         p {
-            font-size: 1.15rem;
+            font-size: 1.125rem;
             margin-bottom: 1.5rem;
-            max-width: 60ch;
+            max-width: 65ch;
         }
 
         ul {
-            margin-left: 20px;
+            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         li {
             font-size: 1.1rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
         }
 
         /* Destaques no texto */
         .highlight {
-            color: #00f5d4;
+            color: var(--highlight-color);
             font-weight: bold;
         }
 
-        /* Links e Botões */
+        /* Botões Estilizados */
         .btn {
             display: inline-block;
             background-color: var(--accent-purple);
             color: var(--text-light);
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 1.6rem;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
             font-size: 1.1rem;
-            transition: background 0.3s;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
             max-width: max-content;
+            margin-top: 0.5rem;
         }
 
         .right-panel .btn {
             background-color: var(--accent-blue);
         }
 
-        .btn:hover, .btn:focus {
-            filter: brightness(1.2);
-            outline: 3px solid var(--focus-border);
+        .btn:hover {
+            filter: brightness(1.15);
+            transform: translateY(-2px);
         }
 
-        a:focus {
+        .btn:focus, a:focus {
             outline: 3px solid var(--focus-border);
-            outline-offset: 2px;
+            outline-offset: 3px;
         }
     </style>
 </head>
@@ -165,16 +170,16 @@
 
     <main class="container" id="conteudo-principal">
        
-        <!-- Painel Roxo: Contexto sobre Visão e Mobilidade -->
+        <!-- Painel Roxo: Contexto -->
         <section class="left-panel" aria-label="Contexto sobre deficiência visual e mobilidade">
-            <h1>Visão & Mobilidade</h1>
+            <h1>Visão &amp; Mobilidade</h1>
             <p>A autonomia para ir e vir é um dos maiores desafios enfrentados por pessoas com deficiência visual ou baixa visão no espaço urbano.</p>
             <p>Calçadas irregulares, obstáculos aéreos (como orelhões e galhos) e barreiras inesperadas limitam a segurança na locomoção diária.</p>
             <p>A tecnologia assistiva surge como uma ponte para transformar essa realidade, unindo <span class="highlight">eletrônica acessível</span> e impacto social.</p>
-            <a href="https://www.gov.br&quot; class="btn" target="_blank" rel="noopener">Sobre a Lei de Inclusão</a>
+            <a href="https://www.gov.br" class="btn" target="_blank" rel="noopener noreferrer">Sobre a Lei de Inclusão</a>
         </section>
 
-        <!-- Painel Azul: Apresentação do Trabalho de Vocês -->
+        <!-- Painel Azul: O Projeto -->
         <section class="right-panel" aria-label="Apresentação do projeto da bengala eletrônica">
             <h2>Nossa Solução: Bengala Inteligente</h2>
             <p>Como proposta prática para o nosso trabalho sobre acessibilidade visual, desenvolvemos um protótipo de <strong>bengala equipada com sensor ultrassônico</strong>.</p>
@@ -184,7 +189,7 @@
                 <li><strong>Alerta em Tempo Real:</strong> Ao detectar uma barreira física próxima, o sistema aciona um aviso sonoro (buzzer) ou vibratório.</li>
                 <li><strong>Prevenção de Danos:</strong> Diferente da bengala convencional, ela ajuda a identificar perigos na altura da cintura e do peito.</li>
             </ul>
-            <a href="https://github.com&quot; class="btn" target="_blank" rel="noopener">Acompanhar Projeto no GitHub</a>
+            <a href="https://github.com" class="btn" target="_blank" rel="noopener noreferrer">Acompanhar Projeto no GitHub</a>
         </section>
 
     </main>
