@@ -73,10 +73,6 @@ header h1, h1 {
     padding: 1rem;
     margin-top: 1rem;
 }
-
-/* ==========================================================================
-   4. ELEMENTOS INTERATIVOS (BOTÕES E LISTAS)
-   ========================================================================== */
 ul {
     list-style: none;
     margin-top: 0.5rem;
@@ -94,7 +90,6 @@ ul li::before {
     left: 0;
 }
 
-/* Botão Genérico e Botão de Ação */
 button, .btn-acao {
     display: inline-block;
     background-color: var(--azul-principal);
@@ -120,9 +115,6 @@ button:focus, a:focus, .btn-acao:focus {
     outline-offset: 3px;
 }
 
-/* ==========================================================================
-   5. PAINEL DE ACESSIBILIDADE (FIXO)
-   ========================================================================== */
 .painel-acessibilidade {
     position: fixed;
     top: 10px;
@@ -147,9 +139,6 @@ button:focus, a:focus, .btn-acao:focus {
     background-color: var(--azul-destaque);
 }
 
-/* ==========================================================================
-   6. MODO ALTO CONTRASTE (Compatível com .alto-contraste e .high-contrast)
-   ========================================================================== */
 body.alto-contraste,
 body.high-contrast {
     background-color: #000000 !important;
@@ -176,9 +165,6 @@ body.high-contrast .btn-acao {
     font-weight: bold !important;
 }
 
-/* ==========================================================================
-   7. RESPONSIVIDADE (MOBILE)
-   ========================================================================== */
 @media (max-width: 600px) {
     header {
         padding: 2rem 1rem;
