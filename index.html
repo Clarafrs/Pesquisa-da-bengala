@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Protótipo de bengala inteligente com sensor ultrassônico para melhorar a acessibilidade e mobilidade urbana de pessoas com deficiência visual.">
-    <title>Inovação em Acessibilidade: Bengala Ultrassônica</title>
+    <meta name="description" content="Detalhamento do projeto da Bengala Ultrassônica Inteligente para inovação em acessibilidade e mobilidade urbana.">
+    <title>Bengala Ultrassônica Inteligente | Projeto de Acessibilidade</title>
     <style>
-        /* Reset e Variáveis de Cores com Alto Contraste */
         :root {
             --bg-dark-purple: #120024;
-            --bg-dark-blue: #001233;
+            --bg-card: #001233;
             --text-light: #ffffff;
             --accent-purple: #9d4edd;
             --accent-blue: #3a86ff;
-            --focus-border: #00f5d4;
-            --highlight-color: #00f5d4;
+            --accent-cyan: #00f5d4;
+            --border-dashed: #3a86ff;
         }
 
         * {
@@ -28,9 +27,10 @@
             line-height: 1.6;
             color: var(--text-light);
             background-color: var(--bg-dark-purple);
+            padding-bottom: 3rem;
         }
 
-        /* Atalho de acessibilidade para navegação por teclado */
+        /* Atalho de acessibilidade */
         .skip-link {
             position: absolute;
             top: -50px;
@@ -47,119 +47,145 @@
 
         .skip-link:focus {
             top: 0;
-            outline: 3px solid var(--focus-border);
+            outline: 3px solid var(--accent-cyan);
         }
 
-        /* Layout Tela Repartida (Split Screen) */
-        .container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        /* Container Principal em Fluxo Único */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
-        @media (min-width: 768px) {
-            .container {
-                flex-direction: row;
-            }
-        }
-
-        /* Lado Esquerdo - Roxo Escuro (Contexto) */
-        .left-panel {
-            background-color: var(--bg-dark-purple);
-            flex: 1;
-            padding: 2.5rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        /* Cabeçalho de Destaque */
+        header {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #120024, #001233);
             border-bottom: 4px solid var(--accent-purple);
+            margin-bottom: 2rem;
         }
 
-        /* Lado Direito - Azul Escuro (Projeto) */
-        .right-panel {
-            background-color: var(--bg-dark-blue);
-            flex: 1;
-            padding: 2.5rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        @media (min-width: 768px) {
-            .left-panel, .right-panel {
-                padding: 4rem;
-            }
-            .left-panel {
-                border-bottom: none;
-                border-right: 4px solid var(--accent-purple);
-            }
-        }
-
-        /* Tipografia e Hierarquia */
-        h1, h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1.5rem;
+        header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
             color: var(--text-light);
-            line-height: 1.2;
+            margin-bottom: 0.8rem;
         }
 
-        .left-panel h1 {
-            border-left: 6px solid var(--accent-purple);
-            padding-left: 15px;
+        header p {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            max-width: 70ch;
+            margin: 0 auto;
         }
 
-        .right-panel h2 {
+        /* Seções do Projeto (Cards) */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
             border-left: 6px solid var(--accent-blue);
-            padding-left: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .card.purple-border {
+            border-left-color: var(--accent-purple);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         p {
-            font-size: 1.125rem;
-            margin-bottom: 1.5rem;
-            max-width: 65ch;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
         }
 
+        /* Lista Personalizada */
         ul {
-            margin-left: 1.5rem;
+            list-style: none;
             margin-bottom: 1.5rem;
         }
 
         li {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+
+        li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        /* Caixa do Circuito/Componentes */
+        .caixa-componentes {
+            background-color: rgba(58, 134, 255, 0.1);
+            border: 2px dashed var(--border-dashed);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .caixa-componentes h3 {
+            color: var(--accent-cyan);
             margin-bottom: 0.8rem;
         }
 
-        /* Destaques no texto */
+        .grid-componentes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .item-componente {
+            background-color: rgba(18, 0, 36, 0.6);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(157, 78, 221, 0.3);
+        }
+
+        /* Destaques no Texto */
         .highlight {
-            color: var(--highlight-color);
+            color: var(--accent-cyan);
             font-weight: bold;
         }
 
-        /* Botões Estilizados */
+        /* Botão de Ação */
+        .area-botoes {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
         .btn {
             display: inline-block;
-            background-color: var(--accent-purple);
+            background-color: var(--accent-blue);
             color: var(--text-light);
-            padding: 0.9rem 1.6rem;
+            padding: 1rem 2rem;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
             font-size: 1.1rem;
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-            max-width: max-content;
-            margin-top: 0.5rem;
-        }
-
-        .right-panel .btn {
-            background-color: var(--accent-blue);
+            transition: transform 0.2s, background-color 0.2s;
         }
 
         .btn:hover {
-            filter: brightness(1.15);
+            background-color: var(--accent-purple);
             transform: translateY(-2px);
         }
 
         .btn:focus, a:focus {
-            outline: 3px solid var(--focus-border);
+            outline: 3px solid var(--accent-cyan);
             outline-offset: 3px;
         }
     </style>
@@ -168,28 +194,71 @@
 
     <a href="#conteudo-principal" class="skip-link">Ir para o conteúdo principal</a>
 
-    <main class="container" id="conteudo-principal">
-       
-        <!-- Painel Roxo: Contexto -->
-        <section class="left-panel" aria-label="Contexto sobre deficiência visual e mobilidade">
-            <h1>Visão &amp; Mobilidade</h1>
-            <p>A autonomia para ir e vir é um dos maiores desafios enfrentados por pessoas com deficiência visual ou baixa visão no espaço urbano.</p>
-            <p>Calçadas irregulares, obstáculos aéreos (como orelhões e galhos) e barreiras inesperadas limitam a segurança na locomoção diária.</p>
-            <p>A tecnologia assistiva surge como uma ponte para transformar essa realidade, unindo <span class="highlight">eletrônica acessível</span> e impacto social.</p>
-            <a href="https://www.gov.br" class="btn" target="_blank" rel="noopener noreferrer">Sobre a Lei de Inclusão</a>
+    <header>
+        <h1>Bengala Ultrassônica Inteligente</h1>
+        <p>Inovação em tecnologia assistiva para autonomia, prevenção de acidentes e segurança na locomoção urbana.</p>
+    </header>
+
+    <main class="main-container" id="conteudo-principal">
+
+        <!-- Visão Geral -->
+        <section class="card purple-border">
+            <h2>1. O Propósito do Projeto</h2>
+            <p>Pessoas com deficiência visual enfrentam barreiras constantes no espaço urbano. Embora a bengala tradicional seja essencial para mapear o solo, ela possui limitações críticas: <span class="highlight">não detecta obstáculos suspensos</span> (como orelhões, galhos e caçambas) antes do contato físico.</p>
+            <p>O nosso protótipo foi desenvolvido para expandir o raio de percepção do usuário, transformando a bengala comum em um dispositivo ativo de alerta prévio.</p>
         </section>
 
-        <!-- Painel Azul: O Projeto -->
-        <section class="right-panel" aria-label="Apresentação do projeto da bengala eletrônica">
-            <h2>Nossa Solução: Bengala Inteligente</h2>
-            <p>Como proposta prática para o nosso trabalho sobre acessibilidade visual, desenvolvemos um protótipo de <strong>bengala equipada com sensor ultrassônico</strong>.</p>
-            <p>O objetivo é expandir a percepção do usuário e prevenir acidentes antes mesmo do impacto físico. Veja como o sistema funciona:</p>
+        <!-- Funcionamento Técnico -->
+        <section class="card">
+            <h2>2. Como Funciona a Tecnologia</h2>
+            <p>A bengala utiliza o princípio da **Ecolocalização** (similar ao radar biológico dos morcegos) para identificar barreiras físicas antes mesmo do impacto:</p>
             <ul>
-                <li><strong>Mapeamento de Obstáculos:</strong> O sensor emite ondas sonoras imperceptíveis que calculam a distância de objetos à frente.</li>
-                <li><strong>Alerta em Tempo Real:</strong> Ao detectar uma barreira física próxima, o sistema aciona um aviso sonoro (buzzer) ou vibratório.</li>
-                <li><strong>Prevenção de Danos:</strong> Diferente da bengala convencional, ela ajuda a identificar perigos na altura da cintura e do peito.</li>
+                <li><strong>Emissão de Pulso Ultrassônico:</strong> O sensor emite ondas sonoras em alta frequência (imperceptíveis ao ouvido humano).</li>
+                <li><strong>Cálculo de Distância:</strong> O sinal bate no obstáculo e retorna ao sensor. O microcontrolador mede o tempo desse trajeto e calcula a distância exata.</li>
+                <li><strong>Retorno Sensorial (Feedback):</strong> Ao aproximar-se de um obstáculo (ex: menos de 1 metro), o sistema dispara um sinal sonoro (Buzzer) ou vibração no cabo da bengala.</li>
             </ul>
-            <a href="https://github.com" class="btn" target="_blank" rel="noopener noreferrer">Acompanhar Projeto no GitHub</a>
+        </section>
+
+        <!-- Arquitetura do Circuito -->
+        <section class="card purple-border">
+            <h2>3. Componentes do Protótipo</h2>
+            <p>O circuito foi projetado focando em baixo custo, leveza e alta eficiência energética:</p>
+            
+            <div class="caixa-componentes">
+                <h3>Estrutura do Sistema Eletrônico</h3>
+                <div class="grid-componentes">
+                    <div class="item-componente">
+                        <strong>Sensor Ultrassônico</strong>
+                        <p>Mapeia o espaço frontal em um ângulo estratégico.</p>
+                    </div>
+                    <div class="item-componente">
+                        <strong>Microcontrolador</strong>
+                        <p>Processa as leituras do sensor em tempo real.</p>
+                    </div>
+                    <div class="item-componente">
+                        <strong>Buzzer / Módulo Vibratório</strong>
+                        <p>Alerta o usuário sem comprometer a audição.</p>
+                    </div>
+                    <div class="item-componente">
+                        <strong>Fonte de Alimentação</strong>
+                        <p>Bateria recarregável de longa duração.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impacto Social -->
+        <section class="card">
+            <h2>4. Principais Benefícios e Impacto</h2>
+            <ul>
+                <li><strong>Proteção Superior:</strong> Mapeia a área correspondente ao tronco e à cabeça do usuário.</li>
+                <li><strong>Redução do Estresse na Caminhada:</strong> Permite antecipar desvios sem colidir com os objetos.</li>
+                <li><strong>Baixo Custo de Produção:</strong> Utiliza componentes acessíveis, viabilizando a produção em escala para projetos sociais.</li>
+            </ul>
+
+            <div class="area-botoes">
+                <a href="https://github.com" class="btn" target="_blank" rel="noopener noreferrer">Ver Código Fonte e Esquema do Circuito no GitHub</a>
+            </div>
         </section>
 
     </main>
